@@ -157,6 +157,18 @@ With a reference later in the document defining the URL location:
 [id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
 
 
+## Image List (test)
+- ![cat](https://octodex.github.com/images/dojocat.jpg)
+  - sub 1
+  - sub 2
+- ![minon](https://octodex.github.com/images/minion.png)
+  - sub 3
+  - sub 4
+
+## Special Headings
+
+### [`codeblock1`](#)
+
 ## Plugins
 
 The killer feature of `markdown-it` is very effective support of

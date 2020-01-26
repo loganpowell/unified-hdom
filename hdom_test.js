@@ -6,24 +6,42 @@ import github from "remark-github";
 import remark2rehype from "remark-rehype";
 import highlight from "rehype-highlight";
 import rehypeHDOM from "./rehype-hdom";
-import { start } from "@thi.ng/hdom";
+
+import remarkSubSuper from "remark-sub-super";
+import remarkEmoticons from "remark-preset-gfm";
+import gfm from "remark-preset-gfm";
+
+import { start, renderOnce } from "@thi.ng/hdom";
+import { Atom } from "@thi.ng/atom";
+
+var state = new Atom({});
 
 var { readFileSync } = require("fs");
 
-var md = readFileSync("./test.md", "utf-8"); // uses parcel built-in
+var md1 = readFileSync("./test.md", "utf-8"); // uses parcel built-in
+var md = fetch(
+  "https://raw.githubusercontent.com/loganpowell/unified-hdom/master/test.md"
+)
+  .then(r => r.text())
+  .then(d => {
+    console.log({ d });
+    state.reset(d);
+  });
 
 // var text = require("./micro.md") // uses plugin: parcel-plugin-txt
 
 var target = document.getElementById("app");
 
 var processor = unified()
-  .use(markdown)
+  .use(markdown, { gfm: true, footnotes: true, pedantic: true })
+  .use(remarkEmoticons)
+  .use(remarkSubSuper)
   .use(slug)
   .use(toc)
   .use(github, { repository: "rehypejs/rehype-react" })
   .use(remark2rehype)
   .use(highlight)
-  .use(rehypeHDOM, { createElement: React.createElement });
+  .use(rehypeHDOM);
 
 // class App extends React.Component {
 //   constructor() {
@@ -48,9 +66,18 @@ var processor = unified()
 //   }
 // }
 
-const app = processor.processSync(md).contents;
+// const app = ({ state }) => ["div", processor.processSync(md).contents];
 
 // start RAF update & diff loop
-start(app, { root: target, span: false });
-
+// start(ctx => app(ctx), { root: target, span: false, ctx: { state } });
+fetch(
+  "https://raw.githubusercontent.com/loganpowell/unified-hdom/master/test.md"
+)
+  .then(r => r.text())
+  .then(d => {
+    renderOnce(["div", processor.processSync(d).contents], {
+      root: target,
+      span: false
+    });
+  });
 // ReactDOM.render(<App />, document.getElementById("app"));
