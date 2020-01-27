@@ -1,4 +1,12 @@
 ---
+metadata: this is metadata
+tags:
+    - one
+    - two
+---
+
+
+---
 __Advertisement :)__
 
 - __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
@@ -10,34 +18,37 @@ You will like those projects!
 
 ---
 
-# h1 Heading 8-)
+# h1 Heading
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading
 ##### h5 Heading
 ###### h6 Heading
 
+##### chicago-style title capitalization is [enableable](https://github.com/zeit/remark-capitalize)
+
+TOC can be enabled by [`remark-toc`](https://github.com/remarkjs/remark-toc)
+## table of contents
 
 ## Horizontal Rules
 
+(three underscores)
+
 ___
+
+(three dashes)
 
 ---
 
+(three stars)
+
 ***
 
+## github-flavored markdown (GFM) task lists 
 
-## Typographic replacements
+- [ ] Todo
+- [x] Done
 
-Enable typographer option to see result.
-
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
-
-test.. test... test..... test?..... test!....
-
-!!!!!! ???? ,,  -- ---
-
-"Smartypants, double quotes" and 'single quotes'
 
 
 ## Emphasis
@@ -65,13 +76,13 @@ _This is italic text_
 
 Unordered
 
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
+    - Sub-sub lists need 4 spaces:
+        - Ac tristique libero volutpat at
+        - Facilisis in pretium nisl aliquet
+        - Nulla volutpat aliquam velit
+- Very easy!
 
 Ordered
 
@@ -109,7 +120,7 @@ Sample text here...
 
 Syntax highlighting
 
-``` js
+```js
 var foo = function (bar) {
   return bar++;
 };
@@ -128,7 +139,7 @@ console.log(foo(5));
 Right aligned columns
 
 | Option | Description |
-| ------:| -----------:|
+| ---:| ---:|
 | data   | path to data files to supply the data that will be passed into templates. |
 | engine | engine to be used for processing templates. Handlebars is the default. |
 | ext    | extension to be used for dest files. |
@@ -165,48 +176,24 @@ With a reference later in the document defining the URL location:
   - sub 3
   - sub 4
 
-## Special Headings
+🔥 
+
+## special headings
 
 ### [`codeblock1`](#)
-
-## Plugins
-
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
-
-
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
-
-> Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
->
-> Shortcuts (emoticons): :-) :-( 8-) ;)
-
-see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
-
 
 ### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
 - 19^th^
-- H~2~O
+- H~2~O  
 
-
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
-
-++Inserted text++
-
-
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
-
-==Marked text==
-
-
-### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+### footnotes
 
 Footnote 1 link[^first].
 
 Footnote 2 link[^second].
 
-Inline footnote^[Text of inline footnote] definition.
+Inline footnote [^Text of inline footnote] definition.
 
 Duplicated footnote reference[^second].
 
@@ -217,7 +204,9 @@ Duplicated footnote reference[^second].
 [^second]: Footnote text.
 
 
-### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+### [Definition lists](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
+
+The HTML `<dl>` element represents a description list. The element encloses a list of groups of terms (specified using the `<dt>` element) and descriptions (provided by `<dd>` elements). Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).
 
 Term 1
 
@@ -241,17 +230,23 @@ Term 2
   ~ Definition 2a
   ~ Definition 2b
 
+## `remark-github` integration
 
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+Some references:
 
-This is HTML abbreviation example.
+-   Commit: f8083175fe890cbf14f41d0a06e7aa35d4989587
+-   Commit (fork): foo@f8083175fe890cbf14f41d0a06e7aa35d4989587
+-   Commit (repo): remarkjs/remark@e1aa9f6c02de18b9459b7d269712bcb50183ce89
+-   Issue or PR (`#`): #1
+-   Issue or PR (`GH-`): GH-1
+-   Issue or PR (fork): foo#1
+-   Issue or PR (project): remarkjs/remark#1
+-   Mention: @wooorm
 
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+Some links:
 
-*[HTML]: Hyper Text Markup Language
-
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
-
-::: warning
-*here be dragons*
-:::
+-   Commit: https://github.com/remarkjs/remark/commit/e1aa9f6c02de18b9459b7d269712bcb50183ce89
+-   Commit comment: https://github.com/remarkjs/remark/commit/ac63bc3abacf14cf08ca5e2d8f1f8e88a7b9015c#commitcomment-16372693
+-   Issue or PR: https://github.com/remarkjs/remark/issues/182
+-   Issue or PR comment: https://github.com/remarkjs/remark-github/issues/3#issue-151160339
+-   Mention: @ben-eb
