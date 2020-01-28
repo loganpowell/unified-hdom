@@ -25,7 +25,7 @@ You will like those projects!
 ##### h5 Heading
 ###### h6 Heading
 
-##### chicago-style title capitalization is [enableable](https://github.com/zeit/remark-capitalize)
+##### chicago-style title capitalization is enableable
 
 TOC can be enabled by [`remark-toc`](https://github.com/remarkjs/remark-toc)
 ## table of contents
@@ -44,7 +44,7 @@ ___
 
 ***
 
-## github-flavored markdown (GFM) task lists 
+## github-flavored markdown task lists
 
 - [ ] Todo
 - [x] Done
@@ -144,6 +144,13 @@ Right aligned columns
 | engine | engine to be used for processing templates. Handlebars is the default. |
 | ext    | extension to be used for dest files. |
 
+Center aligned columns
+
+| Option | Description |
+| :---:| :---:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
 
 ## Links
 
@@ -151,8 +158,7 @@ Right aligned columns
 
 [link with title](http://nodeca.github.io/pica/demo/ "title text!")
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
-
+Autoconverted link https://github.com/nodeca/pica
 
 ## Images
 
@@ -189,19 +195,19 @@ With a reference later in the document defining the URL location:
 
 ### footnotes
 
-Footnote 1 link[^first].
+Footnote 1 link[^a1].
 
-Footnote 2 link[^second].
+Footnote 2 link[^a2].
 
 Inline footnote [^Text of inline footnote] definition.
 
-Duplicated footnote reference[^second].
+Duplicated footnote reference[^a2].
 
-[^first]: Footnote **can have markup**
+[^a1]: Footnote **can have markup**
 
     and multiple paragraphs.
 
-[^second]: Footnote text.
+[^a2]: Footnote text.
 
 
 ### [Definition lists](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
@@ -232,7 +238,7 @@ Term 2
 
 ## `remark-github` integration
 
-Some references:
+github references:
 
 -   Commit: f8083175fe890cbf14f41d0a06e7aa35d4989587
 -   Commit (fork): foo@f8083175fe890cbf14f41d0a06e7aa35d4989587
@@ -243,7 +249,7 @@ Some references:
 -   Issue or PR (project): remarkjs/remark#1
 -   Mention: @wooorm
 
-Some links:
+github.com links:
 
 -   Commit: https://github.com/remarkjs/remark/commit/e1aa9f6c02de18b9459b7d269712bcb50183ce89
 -   Commit comment: https://github.com/remarkjs/remark/commit/ac63bc3abacf14cf08ca5e2d8f1f8e88a7b9015c#commitcomment-16372693

@@ -1,47 +1,53 @@
 "use strict"
 
 var toH = require("hast-to-hyperscript")
-var tableCellStyle = require("@mapbox/hast-util-table-cell-style")
-
-module.exports = rehypeHDOM
 
 var has = {}.hasOwnProperty
 
-// Add a React compiler.
-function rehypeHDOM(options) {
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0 && obj.constructor === Object
+}
+
+// Add an HDOM compiler.
+module.exports = function rehypeHDOM(options) {
   var settings = options || {}
-  var hdom = (tag, attrs, res) => [tag, attrs, res] //settings.hdom;
-  var Fragment = settings.Fragment
+  /**
+   * @example
+   * components: {
+   *   a: customLink,
+   *   p: customPara
+   * }
+   */
   var components = settings.components || {}
+  // assigns `key` attribute of element (+ ascending numbers)
+  var key_prefix = settings.prefix || ""
 
   this.Compiler = compiler
 
   function compiler(node) {
-    var res = toH(h, tableCellStyle(node), settings.prefix)
-
-    if (node.type === "root") {
-      // Invert <https://github.com/syntax-tree/hast-to-hyperscript/blob/d227372/index.js#L46-L56>.
-      if (
-        res.type === "div" &&
-        (node.children.length !== 1 || node.children[0].type !== "element")
-      ) {
-        res = res.props.children
-      } else {
-        res = [res]
-      }
-
-      return hdom(Fragment || "div", {}, res)
+    // Wrap `hdom` to pass components in.
+    function hdom(name, props, children) {
+      if (!Array.isArray(children)) children = []
+      // way to inject custom components from settings
+      var component = has.call(components, name) ? components[name] : name
+      // remove empty prop objects
+      var proxy
+      if (isEmpty(props || {})) {
+        proxy = [component]
+      } else proxy = [component, props]
+      // console.log({ component, props, children });
+      // filter out newlines
+      var el = proxy.concat(children).filter(function(x) {
+        return x !== "\n"
+      })
+      // console.log({ el })
+      return el
     }
 
-    return res
-  }
+    var res = toH(hdom, node, key_prefix)
 
-  // Wrap `hdom` to pass components in.
-  function h(name, props = {}, children = []) {
-    var component = has.call(components, name) ? components[name] : name
-    // console.log({ component, props, children });
-    var el = [component, props, ...children]
-    // console.log({ el });
-    return el
+    console.log({ res })
+
+    return res
   }
 }
