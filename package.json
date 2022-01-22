@@ -40,6 +40,6 @@
   },
   "devDependencies": {
     "gh-pages": "^2.2.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^3.1.1"
   }
 }
